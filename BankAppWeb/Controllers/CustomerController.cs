@@ -110,7 +110,15 @@ namespace BankAppWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-                return RedirectToAction("Index");
+                using (var business = new CustomersBusiness())
+                {
+                    if (business.DeleteCustomer(business.SelectCustomerById(id)))
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                
+                return View();
             }
             catch
             {
