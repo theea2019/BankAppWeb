@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Bank.Commons;
-using Bank.BussinessLogic;
-using Bank.DataAccess;
+using Bank.BusinessLogic;
 using Bank.Models.Concretes;
 
 namespace BankAppWeb.Controllers
@@ -46,9 +43,9 @@ namespace BankAppWeb.Controllers
                 // TODO: Add insert logic
 
                 InsertCustomer(
-                    collection["Name"],
-                    collection["Surname"],
-                    collection["Passkey"],
+                    collection["CustomerName"],
+                    collection["CustomerSurname"],
+                    collection["CustomerPasskey"],
                     decimal.Parse(collection["Balance"]),
                     byte.Parse(collection["BalanceType"]));
                 
@@ -85,9 +82,9 @@ namespace BankAppWeb.Controllers
             try
             {
                 UpdateCustomer(
-                    collection["Name"],
-                    collection["Surname"],
-                    collection["Passkey"],
+                    collection["CustomerName"],
+                    collection["CustomerSurname"],
+                    collection["CustomerPasskey"],
                     decimal.Parse(collection["Balance"]),
                     byte.Parse(collection["BalanceType"]),
                     bool.Parse(collection["isActive"]));
@@ -113,7 +110,6 @@ namespace BankAppWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -143,7 +139,7 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                using (var business = new CustomersBussiness())
+                using (var business = new CustomersBusiness())
                 {
                     Customers customer = new Customers();
                     customer.CustomerName = name;
@@ -167,7 +163,7 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                using (var business = new CustomersBussiness())
+                using (var business = new CustomersBusiness())
                 {
                     var entity = new Customers();
                     entity.CustomerName = name;
@@ -196,7 +192,7 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                using (var business = new CustomersBussiness())
+                using (var business = new CustomersBusiness())
                 {
                     return business.SelectAllCustomers();
                 }
@@ -212,16 +208,16 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                using (var business = new CustomersBussiness())
+                using (var business = new CustomersBusiness())
                 {
                     return business.SelectCustomerById(ID);
                 }
             }
             catch (Exception)
             {
-                throw;
+                // TODO - LOG
+                throw new Exception("Customer doesn't exists.");
             }
-            return null;
         }
 
         #endregion

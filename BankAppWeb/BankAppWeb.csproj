@@ -45,8 +45,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bank.BussinesLogic">
-      <HintPath>..\Bank.BussinesLogic\bin\Debug\Bank.BussinesLogic.dll</HintPath>
+    <Reference Include="Bank.BusinessLogic">
+      <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.BusinessLogic.dll</HintPath>
     </Reference>
     <Reference Include="Bank.Commons">
       <HintPath>..\Bank.BussinesLogic\bin\Debug\Bank.Commons.dll</HintPath>
