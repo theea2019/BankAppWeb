@@ -1,0 +1,13 @@
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.DataAccess.dll.config
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.DataAccess.dll
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.DataAccess.pdb
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.Commons.dll
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.Models.dll
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.Commons.pdb
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.Commons.dll.config
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\bin\Debug\Bank.Models.pdb
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\obj\Debug\Bank.DataAccess.csprojAssemblyReference.cache
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\obj\Debug\Bank.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\obj\Debug\Bank.DataAccess.csproj.CopyComplete
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\obj\Debug\Bank.DataAccess.dll
+C:\Users\ezran\source\repos\BankApp\Bank.DataAccess\obj\Debug\Bank.DataAccess.pdb

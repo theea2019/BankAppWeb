@@ -1,0 +1,6 @@
+C:\Users\ezran\source\repos\BankApp\Bank.Models\bin\Debug\Bank.Models.dll
+C:\Users\ezran\source\repos\BankApp\Bank.Models\bin\Debug\Bank.Models.pdb
+C:\Users\ezran\source\repos\BankApp\Bank.Models\obj\Debug\Bank.Models.csprojAssemblyReference.cache
+C:\Users\ezran\source\repos\BankApp\Bank.Models\obj\Debug\Bank.Models.csproj.CoreCompileInputs.cache
+C:\Users\ezran\source\repos\BankApp\Bank.Models\obj\Debug\Bank.Models.dll
+C:\Users\ezran\source\repos\BankApp\Bank.Models\obj\Debug\Bank.Models.pdb

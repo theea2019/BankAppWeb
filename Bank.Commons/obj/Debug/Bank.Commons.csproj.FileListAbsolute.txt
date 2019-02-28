@@ -1,0 +1,7 @@
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\bin\Debug\Bank.Commons.dll.config
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\bin\Debug\Bank.Commons.dll
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\bin\Debug\Bank.Commons.pdb
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\obj\Debug\Bank.Commons.csprojAssemblyReference.cache
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\obj\Debug\Bank.Commons.csproj.CoreCompileInputs.cache
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\obj\Debug\Bank.Commons.dll
+C:\Users\ezran\source\repos\BankApp\Bank.Commons\obj\Debug\Bank.Commons.pdb
