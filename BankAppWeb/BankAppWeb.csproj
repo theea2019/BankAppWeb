@@ -45,17 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bank.BusinessLogic">
+    <Reference Include="Bank.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.BusinessLogic.dll</HintPath>
     </Reference>
     <Reference Include="Bank.Commons">
-      <HintPath>..\Bank.BussinesLogic\bin\Debug\Bank.Commons.dll</HintPath>
+      <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.Commons.dll</HintPath>
     </Reference>
     <Reference Include="Bank.DataAccess">
-      <HintPath>..\Bank.BussinesLogic\bin\Debug\Bank.DataAccess.dll</HintPath>
+      <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Bank.Models">
-      <HintPath>..\Bank.BussinesLogic\bin\Debug\Bank.Models.dll</HintPath>
+      <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.Models.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -167,7 +168,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -100,7 +100,17 @@ namespace BankAppWeb.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                DeleteCustomer(id);
+
+                return RedirectToAction("ListAll");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         // POST: Customer/Delete/5
@@ -110,15 +120,7 @@ namespace BankAppWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-                using (var business = new CustomersBusiness())
-                {
-                    if (business.DeleteCustomer(business.SelectCustomerById(id)))
-                    {
-                        return RedirectToAction("Index");
-                    }
-                }
-                
-                return View();
+                return RedirectToAction("ListAll");
             }
             catch
             {
@@ -193,7 +195,18 @@ namespace BankAppWeb.Controllers
 
         private void DeleteCustomer(int ID)
         {
-            // TODO : DeleteByID
+            try
+            {
+                using (var business = new CustomersBusiness())
+                {
+                    business.DeleteCustomerById(ID);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private List<Customers> ListAllCustomers()
