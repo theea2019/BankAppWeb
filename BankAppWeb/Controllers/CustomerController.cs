@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Bank.BusinessLogic;
+using Bank.Commons.Concretes.Helpers;
+using Bank.Commons.Concretes.Logger;
 using Bank.Models.Concretes;
 
 namespace BankAppWeb.Controllers
 {
     public class CustomerController : Controller
     {
-        // TODO: LOGHANDLER
 
         // GET: Customer
         public ActionResult Index()
@@ -51,8 +52,9 @@ namespace BankAppWeb.Controllers
                 
                 return RedirectToAction("ListAll");
             }
-            catch
+            catch(Exception ex)
             {
+                LogHelper.Log(LogTarget.File,ExceptionHelper.ExceptionToString(ex),true);
                 return View();
             }
         }
@@ -65,9 +67,10 @@ namespace BankAppWeb.Controllers
                 var customer = SelectCustomerByID(id);
                 return View(customer);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
             }
         }
 
@@ -106,10 +109,9 @@ namespace BankAppWeb.Controllers
 
                 return RedirectToAction("ListAll");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
             }
         }
 
@@ -122,9 +124,9 @@ namespace BankAppWeb.Controllers
                 // TODO: Add delete logic here
                 return RedirectToAction("ListAll");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
             }
         }
 
@@ -139,7 +141,8 @@ namespace BankAppWeb.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
             }
         }
 
@@ -162,10 +165,10 @@ namespace BankAppWeb.Controllers
                     bool success = business.InsertCustomer(customer);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
             }
         }
 
@@ -186,10 +189,10 @@ namespace BankAppWeb.Controllers
                     var success = business.UpdateCustomer(entity);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
             }
         }
 
@@ -202,10 +205,10 @@ namespace BankAppWeb.Controllers
                     business.DeleteCustomerById(ID);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
             }
         }
 
@@ -218,11 +221,11 @@ namespace BankAppWeb.Controllers
                     return business.SelectAllCustomers();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
             }
-            return null;
         }
 
         private Customers SelectCustomerByID(int ID)
@@ -234,9 +237,9 @@ namespace BankAppWeb.Controllers
                     return business.SelectCustomerById(ID);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO - LOG
+                LogHelper.Log(LogTarget.File,ExceptionHelper.ExceptionToString(ex),true);
                 throw new Exception("Customer doesn't exists.");
             }
         }

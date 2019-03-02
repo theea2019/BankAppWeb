@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\BankAppWeb",
-    "\\BankAppWeb\\Controllers"
+    "\\BankAppWeb\\Controllers",
+    "\\BankAppWeb\\Views",
+    "\\BankAppWeb\\Views\\Customer"
   ],
+  "SelectedNode": "\\BankAppWeb\\Views\\Customer\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }
