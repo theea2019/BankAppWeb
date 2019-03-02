@@ -112,6 +112,7 @@ namespace BankAppWeb.Controllers
             catch (Exception ex)
             {
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Operation failed!", ex);
             }
         }
 
@@ -127,6 +128,7 @@ namespace BankAppWeb.Controllers
             catch(Exception ex)
             {
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Operation failed!", ex);
             }
         }
 
