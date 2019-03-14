@@ -139,7 +139,6 @@ C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\roslyn\vbc.rsp
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Antlr3.Runtime.dll
-C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.BusinessLogic.dll
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.Commons.dll
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.Models.dll
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Microsoft.AspNet.TelemetryCorrelation.dll
@@ -155,9 +154,6 @@ C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\System.Web.WebPages.Deploym
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\System.Web.WebPages.dll
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\WebGrease.dll
-C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.DataAccess.dll
-C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.BusinessLogic.pdb
-C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.BusinessLogic.dll.config
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.Commons.pdb
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.Commons.dll.config
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.Models.pdb
@@ -173,8 +169,6 @@ C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Antlr3.Runtime.pdb
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.DataAccess.pdb
-C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\bin\Bank.DataAccess.dll.config
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.csproj.CoreCompileInputs.cache
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.csproj.CopyComplete
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.dll

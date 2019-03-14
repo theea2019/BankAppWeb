@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web.Mvc;
-using Bank.BusinessLogic;
 using Bank.Commons.Concretes.Helpers;
 using Bank.Commons.Concretes.Logger;
-using Bank.Models.Concretes;
+using BankAppWeb.BankAppCustomerService;
+using Customers = Bank.Models.Concretes.Customers;
+using Transactions = Bank.Models.Concretes.Transactions;
 
 namespace BankAppWeb.Controllers
 {
     public class CustomerController : Controller
     {
-
+        
         // GET: Customer
         public ActionResult Index()
         {
@@ -21,7 +23,7 @@ namespace BankAppWeb.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(SelectCustomerByID(id));
         }
 
         // GET: Customer/Create
@@ -41,16 +43,10 @@ namespace BankAppWeb.Controllers
             }
             try
             {
-                // TODO: Add insert logic
+                    if (InsertCustomer(collection["CustomerName"],collection["CustomerSurname"],collection["CustomerPasskey"],decimal.Parse(collection["Balance"]),byte.Parse(collection["BalanceType"])))
+                       return RedirectToAction("ListAll");
 
-                InsertCustomer(
-                    collection["CustomerName"],
-                    collection["CustomerSurname"],
-                    collection["CustomerPasskey"],
-                    decimal.Parse(collection["Balance"]),
-                    byte.Parse(collection["BalanceType"]));
-                
-                return RedirectToAction("ListAll");
+                return View();
             }
             catch(Exception ex)
             {
@@ -64,8 +60,7 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                var customer = SelectCustomerByID(id);
-                return View(customer);
+                return View(SelectCustomerByID(id));
             }
             catch (Exception ex)
             {
@@ -84,15 +79,10 @@ namespace BankAppWeb.Controllers
             }
             try
             {
-                UpdateCustomer(
-                    collection["CustomerName"],
-                    collection["CustomerSurname"],
-                    collection["CustomerPasskey"],
-                    decimal.Parse(collection["Balance"]),
-                    byte.Parse(collection["BalanceType"]),
-                    bool.Parse(collection["isActive"]));
+                if (UpdateCustomer(id, collection["CustomerName"],collection["CustomerSurname"],collection["CustomerPasskey"],decimal.Parse(collection["Balance"]),byte.Parse(collection["BalanceType"])))
+                    return RedirectToAction("Index");
 
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
@@ -105,27 +95,11 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                DeleteCustomer(id);
-
+                if (DeleteCustomer(id))
+                    return RedirectToAction("ListAll");
                 return RedirectToAction("ListAll");
             }
             catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Operation failed!", ex);
-            }
-        }
-
-        // POST: Customer/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                return RedirectToAction("ListAll");
-            }
-            catch(Exception ex)
             {
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("Operation failed!", ex);
@@ -136,10 +110,8 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                var customer = from c in ListAllCustomers()
-                                     orderby c.CustomerID
-                                     select c;
-                return View(customer);
+                IList<Customers> customers = ListAllCustomers().ToList();
+                return View(customers);
             }
             catch (Exception ex)
             {
@@ -150,21 +122,46 @@ namespace BankAppWeb.Controllers
 
         #region PRIVATE METHODS
         
-        private void InsertCustomer(string name, string surname, string passkey, decimal balance, byte balancetype)
+        private bool InsertCustomer(string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive = true)
         {
             try
             {
-                using (var business = new CustomersBusiness())
-                {
-                    Customers customer = new Customers();
-                    customer.CustomerName = name;
-                    customer.CustomerSurname = surname;
-                    customer.CustomerPasskey = passkey;
-                    customer.Balance = balance;
-                    customer.BalanceType = balancetype;
-                    customer.isActive = true;
+                using (var customerSoapClient = new CustomerWebServiceSoapClient()) {
+                    return customerSoapClient.InsertCustomer(new BankAppCustomerService.Customers()
+                    {
+                        CustomerName = name,
+                        CustomerSurname = surname,
+                        CustomerPasskey = passkey,
+                        Balance = balance,
+                        BalanceType = balancetype,
+                        isActive = true
+                    });
+                 }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
+            }
+        }
 
-                    bool success = business.InsertCustomer(customer);
+        private bool UpdateCustomer(int id, string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive = true)
+        {
+            try
+            {
+
+                using (var customerSoapClient = new CustomerWebServiceSoapClient())
+                {
+                    return customerSoapClient.InsertCustomer(new BankAppCustomerService.Customers()
+                    {
+                        CustomerID = id,
+                        CustomerName = name,
+                        CustomerSurname = surname,
+                        CustomerPasskey = passkey,
+                        Balance = balance,
+                        BalanceType = balancetype,
+                        isActive = isActive
+                    });
                 }
             }
             catch (Exception ex)
@@ -174,37 +171,13 @@ namespace BankAppWeb.Controllers
             }
         }
 
-        private void UpdateCustomer(string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive)
+        private bool DeleteCustomer(int ID)
         {
             try
             {
-                using (var business = new CustomersBusiness())
+                using (var customerSoapClient = new CustomerWebServiceSoapClient())
                 {
-                    var entity = new Customers();
-                    entity.CustomerName = name;
-                    entity.CustomerSurname = surname;
-                    entity.CustomerPasskey = passkey;
-                    entity.Balance = balance;
-                    entity.BalanceType = balancetype;
-                    entity.isActive = isActive;
-
-                    var success = business.UpdateCustomer(entity);
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Customer doesn't exists.");
-            }
-        }
-
-        private void DeleteCustomer(int ID)
-        {
-            try
-            {
-                using (var business = new CustomersBusiness())
-                {
-                    business.DeleteCustomerById(ID);
+                    return customerSoapClient.DeleteCustomer(ID);
                 }
             }
             catch (Exception ex)
@@ -218,9 +191,24 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                using (var business = new CustomersBusiness())
+                using (var customerSoapClient = new CustomerWebServiceSoapClient())
                 {
-                    return business.SelectAllCustomers();
+                    List<Customers> customers = new List<Customers>();
+                    foreach (var responsedCustomer in customerSoapClient.SelectAllCustomers().OrderBy(x => x.CustomerID).ToList())
+                    {
+                        Customers castedCustomer = new Customers()
+                        {
+                            CustomerID = responsedCustomer.CustomerID,
+                            CustomerName = responsedCustomer.CustomerName,
+                            CustomerSurname = responsedCustomer.CustomerSurname,
+                            CustomerPasskey = responsedCustomer.CustomerPasskey,
+                            Balance = responsedCustomer.Balance,
+                            BalanceType = responsedCustomer.BalanceType,
+                            isActive = responsedCustomer.isActive
+                        };
+                        customers.Add(castedCustomer);
+                    }
+                    return customers;
                 }
             }
             catch (Exception ex)
@@ -234,9 +222,41 @@ namespace BankAppWeb.Controllers
         {
             try
             {
-                using (var business = new CustomersBusiness())
+                using (var customerSoapClient = new CustomerWebServiceSoapClient())
                 {
-                    return business.SelectCustomerById(ID);
+                    Customers castedCustomer = null;
+                    BankAppCustomerService.Customers responsedCustomer = customerSoapClient.SelectCustomerById(ID);
+                    if (responsedCustomer != null)
+                    {
+                        castedCustomer = new Customers()
+                        {
+                            CustomerID = responsedCustomer.CustomerID,
+                            CustomerName = responsedCustomer.CustomerName,
+                            CustomerSurname = responsedCustomer.CustomerSurname,
+                            CustomerPasskey = responsedCustomer.CustomerPasskey,
+                            Balance = responsedCustomer.Balance,
+                            BalanceType = responsedCustomer.BalanceType,
+                            isActive = responsedCustomer.isActive
+                        };
+                        List<Transactions> castedTransactions = new List<Transactions>();
+                        foreach (var responsedTransaction in responsedCustomer.Transactions)
+                        {
+                            castedTransactions.Add(new Transactions()
+                            {
+                                TransactorAccountNumber = responsedTransaction.TransactorAccountNumber,
+                                TransactionDate = responsedTransaction.TransactionDate,
+                                TransactionID = responsedTransaction.TransactionID,
+                                RecieverAccountNumber = responsedTransaction.RecieverAccountNumber,
+                                TransactionAmount = responsedTransaction.TransactionAmount,
+                                Customer = castedCustomer,
+                                isSuccess = responsedTransaction.isSuccess
+                            });
+                        }
+
+                        castedCustomer.Transactions.AddRange(castedTransactions);
+                    }
+
+                    return castedCustomer;
                 }
             }
             catch (Exception ex)
