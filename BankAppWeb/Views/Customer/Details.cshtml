@@ -73,7 +73,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(t => item.TransactorAccountNumber) -----> @Html.Raw(item.RecieverAccountNumber != null ? item.RecieverAccountNumber : item.TransactorAccountNumber)
+            @Html.DisplayFor(t => item.TransactorAccountNumber) -----> @Html.Raw(item.ReceiverAccountNumber != null ? item.ReceiverAccountNumber : item.TransactorAccountNumber)
         </dd>
 
         <dt>
@@ -81,7 +81,7 @@
         </dt>
 
         <dd>
-            @Html.Raw(item.RecieverAccountNumber.Equals(Model.CustomerID) ? new HtmlString("<b style='color:green'> +"+item.TransactionAmount+"</b>"): new HtmlString("<b style='color:red'> -"+item.TransactionAmount+"</b>")) <b>@Html.Raw(Model.BalanceType == 0 ? "₺" : Model.BalanceType == 1 ? "$" : "??")</b>
+            @Html.Raw(item.ReceiverAccountNumber.Equals(Model.CustomerID) ? new HtmlString("<b style='color:green'> +"+item.TransactionAmount+"</b>"): new HtmlString("<b style='color:red'> -"+item.TransactionAmount+"</b>")) <b>@Html.Raw(Model.BalanceType == 0 ? "₺" : Model.BalanceType == 1 ? "$" : "??")</b>
         </dd>
 
         <dt>
@@ -97,7 +97,7 @@
         </dt>
 
         <dd>
-            @Html.Raw(item.isSuccess ? new HtmlString("<b style='color:green'>Success</b>"): new HtmlString("<b style ='color:red'>Failed</ b >"))
+            @Html.Raw(item.isSuccess ? new HtmlString("<b style='color:green'>Success</b>"): new HtmlString("<b style ='color:red'>Failed</b>"))
         </dd>
     </dl>
     }

@@ -173,3 +173,4 @@ C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.csproj.Cor
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.csproj.CopyComplete
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.dll
 C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.pdb
+C:\Users\User\Source\Repos\BankAppWeb\BankAppWeb\obj\Debug\BankAppWeb.csprojAssemblyReference.cache

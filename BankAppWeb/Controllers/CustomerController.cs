@@ -246,7 +246,7 @@ namespace BankAppWeb.Controllers
                                 TransactorAccountNumber = responsedTransaction.TransactorAccountNumber,
                                 TransactionDate = responsedTransaction.TransactionDate,
                                 TransactionID = responsedTransaction.TransactionID,
-                                RecieverAccountNumber = responsedTransaction.RecieverAccountNumber,
+                                ReceiverAccountNumber = responsedTransaction.ReceiverAccountNumber,
                                 TransactionAmount = responsedTransaction.TransactionAmount,
                                 Customer = castedCustomer,
                                 isSuccess = responsedTransaction.isSuccess

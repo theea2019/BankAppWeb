@@ -31,7 +31,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="TransactionID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="TransactionAmount" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="TransactorAccountNumber" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RecieverAccountNumber" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceiverAccountNumber" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="isSuccess" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:Customers" />

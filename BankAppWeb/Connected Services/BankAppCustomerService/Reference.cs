@@ -181,7 +181,7 @@ namespace BankAppWeb.BankAppCustomerService {
         
         private int TransactorAccountNumberField;
         
-        private System.Nullable<int> RecieverAccountNumberField;
+        private System.Nullable<int> ReceiverAccountNumberField;
         
         private System.DateTime TransactionDateField;
         
@@ -240,14 +240,14 @@ namespace BankAppWeb.BankAppCustomerService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<int> RecieverAccountNumber {
+        public System.Nullable<int> ReceiverAccountNumber {
             get {
-                return this.RecieverAccountNumberField;
+                return this.ReceiverAccountNumberField;
             }
             set {
-                if ((this.RecieverAccountNumberField.Equals(value) != true)) {
-                    this.RecieverAccountNumberField = value;
-                    this.RaisePropertyChanged("RecieverAccountNumber");
+                if ((this.ReceiverAccountNumberField.Equals(value) != true)) {
+                    this.ReceiverAccountNumberField = value;
+                    this.RaisePropertyChanged("ReceiverAccountNumber");
                 }
             }
         }
