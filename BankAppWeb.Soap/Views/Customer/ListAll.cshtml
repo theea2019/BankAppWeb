@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Bank.Models.Concretes.Customers>
+
+@{
+    ViewBag.Title = "All Customers";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Encode("Customer Name")
+        </th>
+        <th>
+            @Html.Encode("Customer Surname")
+        </th>
+        <th>
+            @Html.Encode("Balance")
+        </th>
+        <th>
+            @Html.Encode("Balance Type")
+        </th>
+        <th>
+            @Html.Encode("Account Status")
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BalanceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isActive)
+            </td>
+            <td>
+                @Html.ActionLink("Detail", "Details", new { id = item.CustomerID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) | 
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }) 
+            </td>
+        </tr>
+    }
+
+</table>

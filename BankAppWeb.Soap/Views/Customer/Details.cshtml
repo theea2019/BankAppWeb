@@ -1,0 +1,109 @@
+﻿@using System.Activities.Statements
+@using System.Runtime.Remoting.Messaging
+@model Bank.Models.Concretes.Customers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPasskey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPasskey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BalanceType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BalanceType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h4>Transactions</h4>
+    <hr />
+    @foreach (var item in Model.Transactions)
+    {
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Raw("Transactions Between")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(t => item.TransactorAccountNumber) -----> @Html.Raw(item.ReceiverAccountNumber != null ? item.ReceiverAccountNumber : item.TransactorAccountNumber)
+        </dd>
+
+        <dt>
+            @Html.Raw("Amount") @Html.Raw(Model.BalanceType == 0 ? "₺" : Model.BalanceType == 1 ? "$" : "??")
+        </dt>
+
+        <dd>
+            @Html.Raw(item.ReceiverAccountNumber.Equals(Model.CustomerID) ? new HtmlString("<b style='color:green'> +"+item.TransactionAmount+"</b>"): new HtmlString("<b style='color:red'> -"+item.TransactionAmount+"</b>")) <b>@Html.Raw(Model.BalanceType == 0 ? "₺" : Model.BalanceType == 1 ? "$" : "??")</b>
+        </dd>
+
+        <dt>
+            @Html.Raw("Date:")
+        </dt>
+
+        <dd>
+            @Html.Raw(item.TransactionDate.ToLongDateString() + " " + item.TransactionDate.ToLongTimeString())
+        </dd>
+
+        <dt>
+            @Html.Raw("Result:")
+        </dt>
+
+        <dd>
+            @Html.Raw(item.isSuccess ? new HtmlString("<b style='color:green'>Success</b>"): new HtmlString("<b style ='color:red'>Failed</b>"))
+        </dd>
+    </dl>
+    }
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+    @Html.ActionLink("Back to List", "ListAll")
+</p>
