@@ -1,6 +1,4 @@
-﻿@model IEnumerable<Bank.Models.Concretes.Customers>
-
-@{
+﻿@{
     ViewBag.Title = "All Customers";
 }
 
@@ -26,6 +24,9 @@
         <th>
             @Html.Encode("Account Status")
         </th>
+        <th>
+            @Html.Encode("Manage Account")
+        </th>
         <th></th>
     </tr>
 </table>
@@ -40,6 +41,7 @@
             url: "http://localhost:33487/api/Customer/",
             dataType: "JSON",
             success: function (data) {
+                console.log(data.Data);
                 $.each(data.Data, function (index, val) {
                     $("#myTable").after(
                         '<tr>' +
@@ -47,7 +49,8 @@
                         '<td>' + val.CustomerSurname + '</td>' +
                         '<td>' + val.Balance + '</td>' +
                         '<td>' + val.BalanceType + '</td>' +
-                        '<td>' + val.AccountStatus + '</td>' +
+                        '<td>' + (val.isActive ? 'Active':'Passive') + '</td>' +
+                        '<td><a href="Details/' + val.CustomerID + '">Details</a> | <a href="/Edit/' + val.CustomerID + '">Edit</a> | <a href="~/Delete/' + val.CustomerID +'">Delete</a> </td>'+
                         '</tr>'
 
                     )

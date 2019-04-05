@@ -1,10 +1,4 @@
-﻿using Bank.Commons.Concretes.Helpers;
-using Bank.Models.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace BankAppWeb.RestApi.Controllers
 {
@@ -95,153 +89,153 @@ namespace BankAppWeb.RestApi.Controllers
 
 
 
-        #region PRIVATE METHODS
+        //#region PRIVATE METHODS
 
-        private bool InsertCustomer(string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive = true)
-        {
-            try
-            {
-                using (var customerSoapClient = new CustomerWebServiceSoapClient())
-                {
-                    return customerSoapClient.InsertCustomer(new BankAppCustomerService.Customers()
-                    {
-                        CustomerName = name,
-                        CustomerSurname = surname,
-                        CustomerPasskey = passkey,
-                        Balance = balance,
-                        BalanceType = balancetype,
-                        isActive = true
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Customer doesn't exists.");
-            }
-        }
+        //private bool InsertCustomer(string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive = true)
+        //{
+        //    try
+        //    {
+        //        using (var customerSoapClient = new CustomerWebServiceSoapClient())
+        //        {
+        //            return customerSoapClient.InsertCustomer(new BankAppCustomerService.Customers()
+        //            {
+        //                CustomerName = name,
+        //                CustomerSurname = surname,
+        //                CustomerPasskey = passkey,
+        //                Balance = balance,
+        //                BalanceType = balancetype,
+        //                isActive = true
+        //            });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+        //        throw new Exception("Customer doesn't exists.");
+        //    }
+        //}
 
-        private bool UpdateCustomer(int id, string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive = true)
-        {
-            try
-            {
+        //private bool UpdateCustomer(int id, string name, string surname, string passkey, decimal balance, byte balancetype, bool isActive = true)
+        //{
+        //    try
+        //    {
 
-                using (var customerSoapClient = new CustomerWebServiceSoapClient())
-                {
-                    return customerSoapClient.InsertCustomer(new BankAppCustomerService.Customers()
-                    {
-                        CustomerID = id,
-                        CustomerName = name,
-                        CustomerSurname = surname,
-                        CustomerPasskey = passkey,
-                        Balance = balance,
-                        BalanceType = balancetype,
-                        isActive = isActive
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Customer doesn't exists.");
-            }
-        }
+        //        using (var customerSoapClient = new CustomerWebServiceSoapClient())
+        //        {
+        //            return customerSoapClient.InsertCustomer(new BankAppCustomerService.Customers()
+        //            {
+        //                CustomerID = id,
+        //                CustomerName = name,
+        //                CustomerSurname = surname,
+        //                CustomerPasskey = passkey,
+        //                Balance = balance,
+        //                BalanceType = balancetype,
+        //                isActive = isActive
+        //            });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+        //        throw new Exception("Customer doesn't exists.");
+        //    }
+        //}
 
-        private bool DeleteCustomer(int ID)
-        {
-            try
-            {
-                using (var customerSoapClient = new CustomerWebServiceSoapClient())
-                {
-                    return customerSoapClient.DeleteCustomer(ID);
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Customer doesn't exists.");
-            }
-        }
+        //private bool DeleteCustomer(int ID)
+        //{
+        //    try
+        //    {
+        //        using (var customerSoapClient = new CustomerWebServiceSoapClient())
+        //        {
+        //            return customerSoapClient.DeleteCustomer(ID);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+        //        throw new Exception("Customer doesn't exists.");
+        //    }
+        //}
 
-        private List<Customers> ListAllCustomers()
-        {
-            try
-            {
-                using (var customerSoapClient = new CustomerWebServiceSoapClient())
-                {
-                    List<Customers> customers = new List<Customers>();
-                    foreach (var responsedCustomer in customerSoapClient.SelectAllCustomers().OrderBy(x => x.CustomerID).ToList())
-                    {
-                        Customers castedCustomer = new Customers()
-                        {
-                            CustomerID = responsedCustomer.CustomerID,
-                            CustomerName = responsedCustomer.CustomerName,
-                            CustomerSurname = responsedCustomer.CustomerSurname,
-                            CustomerPasskey = responsedCustomer.CustomerPasskey,
-                            Balance = responsedCustomer.Balance,
-                            BalanceType = responsedCustomer.BalanceType,
-                            isActive = responsedCustomer.isActive
-                        };
-                        customers.Add(castedCustomer);
-                    }
-                    return customers;
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Customer doesn't exists.");
-            }
-        }
+        //private List<Customers> ListAllCustomers()
+        //{
+        //    try
+        //    {
+        //        using (var customerSoapClient = new CustomerWebServiceSoapClient())
+        //        {
+        //            List<Customers> customers = new List<Customers>();
+        //            foreach (var responsedCustomer in customerSoapClient.SelectAllCustomers().OrderBy(x => x.CustomerID).ToList())
+        //            {
+        //                Customers castedCustomer = new Customers()
+        //                {
+        //                    CustomerID = responsedCustomer.CustomerID,
+        //                    CustomerName = responsedCustomer.CustomerName,
+        //                    CustomerSurname = responsedCustomer.CustomerSurname,
+        //                    CustomerPasskey = responsedCustomer.CustomerPasskey,
+        //                    Balance = responsedCustomer.Balance,
+        //                    BalanceType = responsedCustomer.BalanceType,
+        //                    isActive = responsedCustomer.isActive
+        //                };
+        //                customers.Add(castedCustomer);
+        //            }
+        //            return customers;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+        //        throw new Exception("Customer doesn't exists.");
+        //    }
+        //}
 
-        private Customers SelectCustomerByID(int ID)
-        {
-            try
-            {
-                using (var customerSoapClient = new CustomerWebServiceSoapClient())
-                {
-                    Customers castedCustomer = null;
-                    BankAppCustomerService.Customers responsedCustomer = customerSoapClient.SelectCustomerById(ID);
-                    if (responsedCustomer != null)
-                    {
-                        castedCustomer = new Customers()
-                        {
-                            CustomerID = responsedCustomer.CustomerID,
-                            CustomerName = responsedCustomer.CustomerName,
-                            CustomerSurname = responsedCustomer.CustomerSurname,
-                            CustomerPasskey = responsedCustomer.CustomerPasskey,
-                            Balance = responsedCustomer.Balance,
-                            BalanceType = responsedCustomer.BalanceType,
-                            isActive = responsedCustomer.isActive
-                        };
-                        List<Transactions> castedTransactions = new List<Transactions>();
-                        foreach (var responsedTransaction in responsedCustomer.Transactions)
-                        {
-                            castedTransactions.Add(new Transactions()
-                            {
-                                TransactorAccountNumber = responsedTransaction.TransactorAccountNumber,
-                                TransactionDate = responsedTransaction.TransactionDate,
-                                TransactionID = responsedTransaction.TransactionID,
-                                ReceiverAccountNumber = responsedTransaction.ReceiverAccountNumber,
-                                TransactionAmount = responsedTransaction.TransactionAmount,
-                                Customer = castedCustomer,
-                                isSuccess = responsedTransaction.isSuccess
-                            });
-                        }
+        //private Customers SelectCustomerByID(int ID)
+        //{
+        //    try
+        //    {
+        //        using (var customerSoapClient = new CustomerWebServiceSoapClient())
+        //        {
+        //            Customers castedCustomer = null;
+        //            BankAppCustomerService.Customers responsedCustomer = customerSoapClient.SelectCustomerById(ID);
+        //            if (responsedCustomer != null)
+        //            {
+        //                castedCustomer = new Customers()
+        //                {
+        //                    CustomerID = responsedCustomer.CustomerID,
+        //                    CustomerName = responsedCustomer.CustomerName,
+        //                    CustomerSurname = responsedCustomer.CustomerSurname,
+        //                    CustomerPasskey = responsedCustomer.CustomerPasskey,
+        //                    Balance = responsedCustomer.Balance,
+        //                    BalanceType = responsedCustomer.BalanceType,
+        //                    isActive = responsedCustomer.isActive
+        //                };
+        //                List<Transactions> castedTransactions = new List<Transactions>();
+        //                foreach (var responsedTransaction in responsedCustomer.Transactions)
+        //                {
+        //                    castedTransactions.Add(new Transactions()
+        //                    {
+        //                        TransactorAccountNumber = responsedTransaction.TransactorAccountNumber,
+        //                        TransactionDate = responsedTransaction.TransactionDate,
+        //                        TransactionID = responsedTransaction.TransactionID,
+        //                        ReceiverAccountNumber = responsedTransaction.ReceiverAccountNumber,
+        //                        TransactionAmount = responsedTransaction.TransactionAmount,
+        //                        Customer = castedCustomer,
+        //                        isSuccess = responsedTransaction.isSuccess
+        //                    });
+        //                }
 
-                        castedCustomer.Transactions.AddRange(castedTransactions);
-                    }
+        //                castedCustomer.Transactions.AddRange(castedTransactions);
+        //            }
 
-                    return castedCustomer;
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
-                throw new Exception("Customer doesn't exists.");
-            }
-        }
+        //            return castedCustomer;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+        //        throw new Exception("Customer doesn't exists.");
+        //    }
+        //}
 
-        #endregion
+        //#endregion
     }
 }

@@ -49,10 +49,10 @@
       <HintPath>..\..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.BusinessLogic.dll</HintPath>
     </Reference>
     <Reference Include="Bank.Commons">
-      <HintPath>..\..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.Commons.dll</HintPath>
+      <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.Commons.dll</HintPath>
     </Reference>
     <Reference Include="Bank.Models">
-      <HintPath>..\..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.Models.dll</HintPath>
+      <HintPath>..\..\BankApp\Bank.BusinessLogic\bin\Debug\Bank.Models.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
