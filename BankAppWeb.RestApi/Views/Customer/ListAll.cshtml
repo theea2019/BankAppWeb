@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Bank.Models.Concretes.Customers>
+
+@{
+    ViewBag.Title = "All Customers";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr id="myTable">
+        <th>
+            @Html.Encode("Customer Name")
+        </th>
+        <th>
+            @Html.Encode("Customer Surname")
+        </th>
+        <th>
+            @Html.Encode("Balance")
+        </th>
+        <th>
+            @Html.Encode("Balance Type")
+        </th>
+        <th>
+            @Html.Encode("Account Status")
+        </th>
+        <th></th>
+    </tr>
+</table>
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<script>
+    $(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:33487/api/Customer/",
+            dataType: "JSON",
+            success: function (data) {
+                $.each(data.Data, function (index, val) {
+                    $("#myTable").after(
+                        '<tr>' +
+                        '<td>' + val.CustomerName + '</td>' +
+                        '<td>' + val.CustomerSurname + '</td>' +
+                        '<td>' + val.Balance + '</td>' +
+                        '<td>' + val.BalanceType + '</td>' +
+                        '<td>' + val.AccountStatus + '</td>' +
+                        '</tr>'
+
+                    )
+                })
+            }
+        })
+    })
+</script>
